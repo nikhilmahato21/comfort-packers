@@ -24,17 +24,11 @@ export default function Navbar({ onNavigate, onBack }) {
           onClick={(e) => { if (onBack) { e.preventDefault(); onBack(); } }}
           className="flex items-center gap-2 group"
         >
-          <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-lg bg-ink flex items-center justify-center text-butter font-display font-black text-xl">
-            C
-          </div>
-          <div className="leading-tight">
-            <div className="font-display font-black text-ink text-lg lg:text-xl tracking-tight">
-              Comfort
-            </div>
-            <div className="text-[10px] lg:text-[11px] uppercase tracking-[0.2em] text-muted -mt-1">
-              Packers &amp; Movers
-            </div>
-          </div>
+          <img
+            src="https://res.cloudinary.com/dynbpb9u0/image/upload/v1779531396/WhatsApp_Image_2026-05-23_at_15.17.46-removebg-preview_g6ci2a.png"
+            alt="Comfort Packers and Movers"
+            className="h-20 lg:h-332 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop nav */}
