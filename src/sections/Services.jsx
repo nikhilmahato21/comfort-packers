@@ -2,14 +2,13 @@ import {
   Home, Car, Bike, Briefcase, PawPrint, Box, Building2, Truck, ArrowUpRight,
 } from 'lucide-react';
 import { SERVICE_CARDS } from '../data/site';
-import { buildWhatsAppLink } from '../lib/whatsapp';
 
 const ICONS = {
   home: Home, car: Car, bike: Bike, briefcase: Briefcase,
   paw: PawPrint, box: Box, building: Building2, truck: Truck,
 };
 
-export default function Services() {
+export default function Services({ onNavigate }) {
   return (
     <section id="services" className="py-20 lg:py-28 relative">
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
@@ -24,12 +23,10 @@ export default function Services() {
           {SERVICE_CARDS.map((s, i) => {
             const Icon = ICONS[s.icon] || Box;
             return (
-              <a
+              <button
                 key={s.slug}
-                href={buildWhatsAppLink(`Hi, I want a quote for ${s.title} from Chennai.`)}
-                target="_blank"
-                rel="noreferrer"
-                className="group relative bg-white border border-ink/10 rounded-3xl p-6 hover:shadow-card hover:-translate-y-1 transition-all duration-300"
+                onClick={() => onNavigate('service', s.slug)}
+                className="group relative bg-white border border-ink/10 rounded-3xl p-6 hover:shadow-card hover:-translate-y-1 transition-all duration-300 text-left w-full"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-ink text-butter flex items-center justify-center group-hover:bg-butter group-hover:text-ink transition-colors">
@@ -58,11 +55,11 @@ export default function Services() {
 
                 <div className="mt-5 pt-5 border-t border-ink/5 flex items-center justify-between">
                   <span className="text-xs font-semibold text-ink uppercase tracking-wider">
-                    Get a quote
+                    Learn more
                   </span>
                   <ArrowUpRight size={18} className="text-ink group-hover:rotate-45 transition-transform" />
                 </div>
-              </a>
+              </button>
             );
           })}
         </div>

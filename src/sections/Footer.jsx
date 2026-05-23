@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { COMPANY, SERVICES_LIST, ROUTES } from '../data/site';
 import { telLink, buildWhatsAppLink } from '../lib/whatsapp';
 
+
 export default function Footer() {
   return (
     <footer className="bg-cream border-t border-ink/10">
@@ -41,11 +42,11 @@ export default function Footer() {
               </span>
               {COMPANY.email}
             </a>
-            <div className="flex items-center gap-3 text-sm text-ink">
-              <span className="w-8 h-8 rounded-lg bg-ink/10 text-ink flex items-center justify-center">
+            <div className="flex items-start gap-3 text-sm text-ink">
+              <span className="w-8 h-8 rounded-lg bg-ink/10 text-ink flex items-center justify-center shrink-0 mt-0.5">
                 <MapPin size={14} />
               </span>
-              Chennai, Tamil Nadu, India
+              <span className="leading-relaxed">{COMPANY.address}</span>
             </div>
           </div>
         </div>

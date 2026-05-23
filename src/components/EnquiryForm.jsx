@@ -30,19 +30,21 @@ export default function EnquiryForm({ compact = false }) {
   return (
     <form
       onSubmit={submit}
-      className={`bg-white rounded-3xl shadow-card border border-ink/5 ${compact ? 'p-5 lg:p-6' : 'p-6 lg:p-8'}`}
+      className={`bg-white ${compact ? 'p-0' : 'rounded-3xl shadow-card border border-ink/5 p-6 lg:p-8'}`}
     >
-      <div className="mb-5">
-        <div className="text-rust text-xs font-bold tracking-[0.25em] uppercase mb-2">
-          Quick Enquiry
+      {!compact && (
+        <div className="mb-5">
+          <div className="text-rust text-xs font-bold tracking-[0.25em] uppercase mb-2">
+            Quick Enquiry
+          </div>
+          <h3 className="font-display font-black text-2xl lg:text-3xl leading-tight text-ink">
+            Request your Chennai moving callback
+          </h3>
+          <p className="text-sm text-muted mt-2 leading-relaxed">
+            Share your move details. Our Chennai team replies on WhatsApp within 15 minutes.
+          </p>
         </div>
-        <h3 className="font-display font-black text-2xl lg:text-3xl leading-tight text-ink">
-          Request your Chennai moving callback
-        </h3>
-        <p className="text-sm text-muted mt-2 leading-relaxed">
-          Share your move details. Our Chennai team replies on WhatsApp within 15 minutes.
-        </p>
-      </div>
+      )}
 
       <div className="space-y-4">
         <Field label="Full Name" required>

@@ -3,22 +3,27 @@ import { useState } from 'react';
 import { COMPANY } from '../data/site';
 import { telLink, buildWhatsAppLink } from '../lib/whatsapp';
 
-export default function Navbar() {
+export default function Navbar({ onNavigate, onBack }) {
   const [open, setOpen] = useState(false);
 
   const links = [
+    { href: '#about',    label: 'About' },
     { href: '#services', label: 'Services' },
-    { href: '#routes', label: 'Routes' },
-    { href: '#process', label: 'Process' },
-    { href: '#faq', label: 'FAQs' },
-    { href: '#enquiry', label: 'Enquiry' },
+    { href: '#routes',   label: 'Routes' },
+    { href: '#coverage', label: 'Coverage' },
+    { href: '#faq',      label: 'FAQs' },
+    { href: '#enquiry',  label: 'Enquiry' },
   ];
 
   return (
     <header className="sticky top-0 z-40 bg-cream/85 backdrop-blur-md border-b border-ink/10">
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a
+          href="/"
+          onClick={(e) => { if (onBack) { e.preventDefault(); onBack(); } }}
+          className="flex items-center gap-2 group"
+        >
           <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-lg bg-ink flex items-center justify-center text-butter font-display font-black text-xl">
             C
           </div>
