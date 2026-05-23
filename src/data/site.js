@@ -203,17 +203,20 @@ export const ROUTE_DATA = [
 
 export const ROUTES = ROUTE_DATA.map((r) => `Chennai to ${r.city}`);
 
-export const KEYWORDS = [
+const toSlug = (text) =>
+  text.toLowerCase().replace(/[&]/g, 'and').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+export const KEYWORD_DATA = [
   'Packers and Movers Chennai',
   'Packers and Movers Chennai to Pallakad',
   'Packers and Movers Chennai to Coimbatore',
   'Packers and Movers Chennai to Mumbai',
   'Packers and Movers Chennai to Pune',
-  'Packers and Movers Chennai to Vishakapatnam',
+  'Packers and Movers Chennai to Visakhapatnam',
   'Packers and Movers Chennai to Delhi',
   'Packers and Movers Chennai to Gurgaon',
   'Packers and Movers Chennai to Kolkata',
-  'Packers and Movers Chennai to Kochin',
+  'Packers and Movers Chennai to Kochi',
   'Packers and Movers Chennai to Trivandrum',
   'Packers and Movers Chennai to Madurai',
   'Packers and Movers Chennai to Trichy',
@@ -221,24 +224,43 @@ export const KEYWORDS = [
   'Packers and Movers Chennai to Nagpur',
   'Packers and Movers Chennai to Ahmedabad',
   'Packers and Movers Chennai to Bhopal',
-  'Packers and Movers Chennai to Indore Nashik',
+  'Packers and Movers Chennai to Indore',
+  'Packers and Movers Chennai to Nashik',
   'Packers and Movers Chennai to Noida',
   'Packers and Movers Chennai to Solapur',
   'Packers and Movers Chennai to Kolhapur',
   'Packers and Movers Chennai to Dehradun',
-  'Packers and Movers Chennai to Jammu Kashmir',
-  'Packers and Movers Chennai to Bhatinda',
+  'Packers and Movers Chennai to Jammu',
   'Packers and Movers Chennai to Chandigarh',
-  'Packers and Movers Chennai to Sivakashi',
+  'Packers and Movers Chennai to Bhatinda',
+  'Packers and Movers Chennai to Sivakasi',
   'Packers and Movers Chennai to Tuticorin',
   'Packers and Movers Chennai to Patna',
-  'Packers and Movers Chennai to Hubbli',
+  'Packers and Movers Chennai to Hubli',
   'Packers and Movers Chennai to Goa',
   'Packers and Movers Chennai to Dhanbad',
   'Packers and Movers Chennai to Bhubaneswar',
   'Packers and Movers Chennai to Hyderabad',
+  'Packers and Movers Chennai to Bangalore',
+  'Packers and Movers Chennai to Surat',
+  'Packers and Movers Chennai to Jaipur',
+  'Packers and Movers Chennai to Lucknow',
+  'Packers and Movers Chennai to Amritsar',
+  'Packers and Movers Chennai to Mysore',
+  'Packers and Movers Chennai to Mangalore',
+  'Packers and Movers Chennai to Pondicherry',
+  'Packers and Movers Chennai to Salem',
+  'Packers and Movers Chennai to Tirunelveli',
+  'Packers and Movers Chennai to Vellore',
+  'Packers and Movers Chennai to Tirupati',
+  'Packers and Movers Chennai to Vijayawada',
+  'Packers and Movers Chennai to Raipur',
+  'Packers and Movers Chennai to Ranchi',
+  'Packers and Movers Chennai to Jodhpur',
   'Packers and Movers Chennai to All Over India',
-];
+].map((text) => ({ text, slug: toSlug(text) }));
+
+export const KEYWORDS = KEYWORD_DATA.map((k) => k.text);
 
 export const SERVICE_DETAILS = {
   'house-shifting-chennai': {

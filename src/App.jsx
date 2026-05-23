@@ -20,12 +20,14 @@ import Footer from './sections/Footer';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import RouteDetailPage from './pages/RouteDetailPage';
 import LocalityDetailPage from './pages/LocalityDetailPage';
+import KeywordDetailPage from './pages/KeywordDetailPage';
 
 function parsePath() {
   const path = window.location.pathname;
   if (path.startsWith('/services/')) return { type: 'service',  slug: path.replace('/services/', '').replace(/\/$/, '') };
   if (path.startsWith('/routes/'))   return { type: 'route',    slug: path.replace('/routes/', '').replace(/\/$/, '') };
   if (path.startsWith('/area/'))     return { type: 'locality', slug: path.replace('/area/', '').replace(/\/$/, '') };
+  if (path.startsWith('/search/'))   return { type: 'keyword',  slug: path.replace('/search/', '').replace(/\/$/, '') };
   return { type: 'home' };
 }
 
@@ -33,7 +35,8 @@ export default function App() {
   const [page, setPage] = useState(parsePath);
 
   const navigate = useCallback((type, slug) => {
-    const path = type === 'home' ? '/' : type === 'locality' ? `/area/${slug}` : `/${type}s/${slug}`;
+    const pathMap = { home: '/', locality: `/area/${slug}`, keyword: `/search/${slug}` };
+    const path = pathMap[type] ?? `/${type}s/${slug}`;
     window.history.pushState({}, '', path);
     setPage(type === 'home' ? { type: 'home' } : { type, slug });
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -74,6 +77,15 @@ export default function App() {
     );
   }
 
+  if (page.type === 'keyword') {
+    return (
+      <>
+        <KeywordDetailPage slug={page.slug} onBack={goHome} onNavigate={navigate} />
+        <WhatsAppFloat />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-cream">
       <Navbar onNavigate={navigate} />
@@ -88,7 +100,7 @@ export default function App() {
         <Process />
         <Testimonials />
         <FAQ />
-        <KeywordsBlock />
+        <KeywordsBlock onNavigate={navigate} />
         <EnquirySection />
       </main>
       <Footer />
