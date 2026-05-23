@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  @apply bg-cream text-ink font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  @apply bg-butter text-ink;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #F5EFE4; }
+::-webkit-scrollbar-thumb { background: #0E1B2C; border-radius: 4px; }
+
+/* Utility: text outline */
+.text-outline {
+  -webkit-text-stroke: 1.5px #0E1B2C;
+  color: transparent;
+}
+
+/* Section number badge */
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+/* Hide scrollbar on marquee */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
