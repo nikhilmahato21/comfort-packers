@@ -9,6 +9,7 @@ import About from './sections/About';
 import Services from './sections/Services';
 import Routes from './sections/Routes';
 import CoverageList from './sections/CoverageList';
+import Gallery from './sections/Gallery';
 import Process from './sections/Process';
 import Testimonials from './sections/Testimonials';
 import FAQ from './sections/FAQ';
@@ -83,6 +84,7 @@ export default function App() {
         <Services onNavigate={navigate} />
         <Routes onNavigate={navigate} />
         <CoverageList onNavigate={navigate} />
+        <Gallery />
         <Process />
         <Testimonials />
         <FAQ />
